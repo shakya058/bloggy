@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <title>Login & Register</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.2)), url('background.jpg') center/cover no-repeat;
+            color: #333;
+        }
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form {
+            display: none;
+        }
+        .form.active {
+            display: block;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f7f7f7;
+            outline: none;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            border-color: #333;
+        }
+        .button {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            background-color: #333;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #555;
+        }
+        p {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .switch-form {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .switch-form:hover {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form login-form active">
+            <h2>Login</h2>
+            <form action="backend.php" method="POST">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="login-password" required>
+                </div>
+                <button type="submit" class="button">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#register" class="switch-form">Register here</a></p>
+        </div>
+
+        <div class="form register-form" id="register">
+            <h2>Register</h2>
+            <form action="backend.php" method="POST">
+                <div class="form-group">
+                    <label for="register-username">Username</label>
+                    <input type="text" id="register-username" name="register-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" name="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" name="register-password" required>
+                </div>
+                <button type="submit" class="button">Register</button>
+            </form>
+            <p>Already have an account? <a href="#" class="switch-form">Login here</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.switch-form').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector('.login-form').classList.toggle('active');
+                document.querySelector('.register-form').classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
